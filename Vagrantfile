@@ -1,19 +1,43 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
+hhvm_installation_type = 'package'
+
+# Ubuntu Precise 12.04
+precise_vm_box = 'precise64'
+precise_vm_box_url = 'http://files.vagrantup.com/precise64.box'
+
+# Ubuntu Saucy 13.10
+saucy_vm_box = 'precise64'
+saucy_vm_box_url = 'http://files.vagrantup.com/precise64.box'
+
 Vagrant.configure('2') do |config|
   config.vm.hostname = 'hhvm-cookbook'
 
   # Ubuntu Precise 12.04
   config.vm.define :ubuntu_precise do |precise|
-    precise.vm.box = 'precise64'
-    precise.vm.box_url = 'http://files.vagrantup.com/precise64.box'
+    precise.vm.box = precise_vm_box
+    precise.vm.box_url = precise_vm_box_url
   end
 
-  # Ubuntu Precise 13.10
-  config.vm.define :ubuntu_saucy do |raring|
-    raring.vm.box = 'saucy64'
-    raring.vm.box_url = 'http://cloud-images.ubuntu.com/vagrant/saucy/current/saucy-server-cloudimg-amd64-vagrant-disk1.box'
+  config.vm.define :ubuntu_precise_src do |precise_src|
+    precise_src.vm.box = precise_vm_box
+    precise_src.vm.box_url = precise_vm_box_url
+
+    hhvm_installation_type = 'source'
+  end
+
+  # Ubuntu Saucy 13.10
+  config.vm.define :ubuntu_saucy do |saucy|
+    saucy.vm.box = saucy_vm_box
+    saucy.vm.box_url = saucy_vm_box_url
+  end
+
+  config.vm.define :ubuntu_saucy_src do |saucy_src|
+    saucy_src.vm.box = saucy_vm_box
+    saucy_src.vm.box_url = saucy_vm_box_url
+
+    hhvm_installation_type = 'source'
   end
 
   # Debian Wheezy 7
@@ -51,7 +75,7 @@ Vagrant.configure('2') do |config|
 
     chef.json = {
         :hhvm => {
-            :installation_type => 'source'
+            :installation_type => hhvm_installation_type
         }
     }
   end
