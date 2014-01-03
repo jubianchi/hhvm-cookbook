@@ -33,13 +33,13 @@ This will install HHVM using packages which is the default installation method.
 
 ### Attributes
 
-| Attribute                          | Default | Description/Values                                                      |
-| ---------------------------------- | ------- | ----------------------------------------------------------------------- |
-| node['hhvm']['installation_type']  | package | Installation method (`package` or `source`)                             |
-| **Package installation**           |         |                                                                         |
-| node['hhvm']['enable_fastcgi']     | true    | Wether to install `hhvm-fastcgi` on supported platforms (Debian/Ubuntu) |
-| **Source installation**            |         |                                                                         |
-| node['hhvm']['source']['revision'] | master  | Revision to checkout when installing from sources                       |
+| Attribute                            | Default | Description/Values                                                      |
+| ------------------------------------ | ------- | ----------------------------------------------------------------------- |
+| `node['hhvm']['installation_type']`  | package | Installation method (`package` or `source`)                             |
+| **Package installation**             |         |                                                                         |
+| `node['hhvm']['enable_fastcgi']`     | true    | Wether to install `hhvm-fastcgi` on supported platforms (Debian/Ubuntu) |
+| **Source installation**              |         |                                                                         |
+| `node['hhvm']['source']['revision']` | master  | Revision to checkout when installing from sources                       |
 
 ## License
 
