@@ -1,4 +1,7 @@
 case node['hhvm']['installation_type']
+  when 'source'
+    include_recipe 'hhvm::source'
+
   when 'package'
     include_recipe 'hhvm::package'
 
