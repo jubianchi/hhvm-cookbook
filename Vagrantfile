@@ -1,43 +1,30 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
-hhvm_installation_type = 'package'
-
-# Ubuntu Precise 12.04
-precise_vm_box = 'precise64'
-precise_vm_box_url = 'http://files.vagrantup.com/precise64.box'
-
-# Ubuntu Saucy 13.10
-saucy_vm_box = 'precise64'
-saucy_vm_box_url = 'http://files.vagrantup.com/precise64.box'
+ui = Vagrant::UI::Colored.new.scope('hhvm-cookbook')
+hhvm_installation_type = ENV['HHVM_INSTALLATION_TYPE'] || 'package'
+hhvm_vm_cpus = ENV['HHVM_VM_CPUS'] || 1
+hhvm_vm_memory = ENV['HHVM_VM_MEMORY'] || 1024
 
 Vagrant.configure('2') do |config|
+  if hhvm_installation_type == 'source' && hhvm_vm_memory.to_i < 4096
+    ui.warn '+-----------------------------------------------------------------+'
+    ui.warn '| During tests, HHVM required 4GB of RAM to build without error ! |'
+    ui.warn '+-----------------------------------------------------------------+'
+  end
+
   config.vm.hostname = 'hhvm-cookbook'
 
   # Ubuntu Precise 12.04
   config.vm.define :ubuntu_precise do |precise|
-    precise.vm.box = precise_vm_box
-    precise.vm.box_url = precise_vm_box_url
-  end
-
-  config.vm.define :ubuntu_precise_src do |precise_src|
-    precise_src.vm.box = precise_vm_box
-    precise_src.vm.box_url = precise_vm_box_url
-
-    hhvm_installation_type = 'source'
+    precise.vm.box = 'precise64'
+    precise.vm.box_url = 'http://files.vagrantup.com/precise64.box'
   end
 
   # Ubuntu Saucy 13.10
   config.vm.define :ubuntu_saucy do |saucy|
-    saucy.vm.box = saucy_vm_box
-    saucy.vm.box_url = saucy_vm_box_url
-  end
-
-  config.vm.define :ubuntu_saucy_src do |saucy_src|
-    saucy_src.vm.box = saucy_vm_box
-    saucy_src.vm.box_url = saucy_vm_box_url
-
-    hhvm_installation_type = 'source'
+    saucy.vm.box = 'saucy64'
+    saucy.vm.box_url = 'http://cloud-images.ubuntu.com/vagrant/saucy/current/saucy-server-cloudimg-amd64-vagrant-disk1.box'
   end
 
   # Debian Wheezy 7
@@ -53,8 +40,8 @@ Vagrant.configure('2') do |config|
   end
 
   config.vm.provider :virtualbox do |vb|
-    vb.customize ['modifyvm', :id, '--cpus', '2']
-    vb.customize ['modifyvm', :id, '--memory', '4096']
+    vb.customize ['modifyvm', :id, '--cpus', hhvm_vm_cpus]
+    vb.customize ['modifyvm', :id, '--memory', hhvm_vm_memory]
   end
 
   # Install/Update Chef to 11.6.0
@@ -75,7 +62,10 @@ Vagrant.configure('2') do |config|
 
     chef.json = {
         :hhvm => {
-            :installation_type => hhvm_installation_type
+            :installation_type => hhvm_installation_type,
+            :source => {
+              :make_jobs => hhvm_vm_cpus
+            }
         }
     }
   end
