@@ -7,7 +7,7 @@ default['hhvm']['enable_fastcgi'] = true
 default['hhvm']['source']['hhvm_repository'] = 'git://github.com/facebook/hhvm.git'
 default['hhvm']['source']['hhvm_revision'] = 'master'
 default['hhvm']['source']['libevent_repository'] = 'git://github.com/libevent/libevent.git'
-default['hhvm']['source']['libevent_revision'] = 'eb8122f26c278e6e3e8a495618ed1ccad293e717' #release-1.4.14b-stable
+default['hhvm']['source']['libevent_revision'] = 'eb8122f26' #release-1.4.14b-stable
 
 default['hhvm']['source']['make_jobs'] = 1
 
