@@ -1,6 +1,15 @@
-case node[:platform]
+case node['platform']
   when 'debian', 'ubuntu'
-    include_recipe 'hhvm::_source_debian'
+    unless defined? node['hhvm']['source']['dependencies'][node['platform']][node['platform_version'].to_f]
+      raise %W(Platform not supported: #{node['platform_family']} (#{node['platform']}) #{node['platform_version']}).join(' ')
+    end
+
+    node['hhvm']['source']['dependencies'][node['platform']][node['platform_version'].to_f].each do |pkg|
+      log 'Installing '.concat(pkg)
+      package pkg
+    end
+
+    include_recipe 'hhvm::_source_'.concat(node[:platform])
 
   else
     raise %W(Platform not supported: #{node['platform_family']} (#{node[:platform]}) #{node['platform_version']}).join(' ')
