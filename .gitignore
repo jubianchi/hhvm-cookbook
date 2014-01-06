@@ -11,3 +11,5 @@
 bin/*
 .bundle/*
 
+package.tar.gz
+
