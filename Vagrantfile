@@ -1,7 +1,7 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
-ui = Vagrant::UI::Colored.new.scope('hhvm-cookbook')
+ui = Vagrant::UI::Colored.new.scope('hhvm')
 hhvm_installation_type = ENV['HHVM_INSTALLATION_TYPE'] || 'package'
 hhvm_vm_cpus = ENV['HHVM_VM_CPUS'] || 1
 hhvm_vm_memory = ENV['HHVM_VM_MEMORY'] || 1024
@@ -13,7 +13,7 @@ Vagrant.configure('2') do |config|
     ui.warn '+-----------------------------------------------------------------+'
   end
 
-  config.vm.hostname = 'hhvm-cookbook'
+  config.vm.hostname = 'hhvm'
 
   # Ubuntu Precise 12.04
   config.vm.define :ubuntu_precise do |precise|

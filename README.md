@@ -1,4 +1,4 @@
-# hhvm-cookbook
+# hhvm
 
 ## Requirements
 
