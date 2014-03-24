@@ -2,6 +2,10 @@ include_recipe 'apt'
 
 case node['platform_version'].to_f
   when 7
+  when 7.1
+  when 7.2
+  when 7.3
+  when 7.4
     release = 'wheezy'
 
   when 12.04
