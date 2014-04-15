@@ -31,7 +31,3 @@ apt_repository 'hhvm' do
 end
 
 package 'hhvm'
-
-if node['hhvm']['enable_fastcgi']
-  package 'hhvm-fastcgi'
-end

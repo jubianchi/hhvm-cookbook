@@ -1,8 +1,5 @@
 default['hhvm']['installation_type'] = 'package'
 
-# Package installation
-default['hhvm']['enable_fastcgi'] = true
-
 # Source installation
 default['hhvm']['source']['hhvm_repository'] = 'git://github.com/facebook/hhvm.git'
 default['hhvm']['source']['hhvm_revision'] = 'master'

@@ -28,8 +28,6 @@
 | Attribute                                         | Default                                | Description/Values                                                         |
 | ------------------------------------------------- | -------------------------------------- | -------------------------------------------------------------------------- |
 | `node['hhvm']['installation_type']`               | package                                | Installation method ([`package`](#hhvmpackage) or [`source`](#hhvmsource)) |
-| **Package installation**                          |                                        |                                                                            |
-| `node['hhvm']['enable_fastcgi']`                  | true                                   | Wether to install `hhvm-fastcgi` on supported platforms (Debian/Ubuntu)    |
 | **Source installation**                           |                                        |                                                                            |
 | `node['hhvm']['source']['make_jobs']`             | 1                                      | Number of parallel jobs when running `make` commands                       |
 | `node['hhvm']['source']['hhvm_repository']`       | git://github.com/facebook/hhvm.git     | HHVM git repository URL                                                    |
