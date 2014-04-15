@@ -1,7 +1,7 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
-ui = Vagrant::UI::Colored.new.scope('hhvm')
+ui = Vagrant::UI::Colored.new
 hhvm_installation_type = ENV['HHVM_INSTALLATION_TYPE'] || 'package'
 hhvm_vm_cpus = ENV['HHVM_VM_CPUS'] || 1
 hhvm_vm_memory = ENV['HHVM_VM_MEMORY'] || 1024
