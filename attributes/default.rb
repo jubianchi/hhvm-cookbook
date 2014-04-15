@@ -1,5 +1,8 @@
 default['hhvm']['installation_type'] = 'package'
 
+# Package installation
+default['hhvm']['package']['type'] = :default
+
 # Source installation
 default['hhvm']['source']['hhvm_repository'] = 'git://github.com/facebook/hhvm.git'
 default['hhvm']['source']['hhvm_revision'] = 'master'

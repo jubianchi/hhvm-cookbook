@@ -63,6 +63,9 @@ Vagrant.configure('2') do |config|
     chef.json = {
         :hhvm => {
             :installation_type => hhvm_installation_type,
+            :package => {
+                :type => 'dbg'
+            },
             :source => {
               :make_jobs => hhvm_vm_cpus
             }

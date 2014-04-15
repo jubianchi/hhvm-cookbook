@@ -30,4 +30,8 @@ apt_repository 'hhvm' do
   key          'http://dl.hhvm.com/conf/hhvm.gpg.key'
 end
 
-package 'hhvm'
+if node['hhvm']['package']['type'] == :default || node['hhvm']['package']['type'] == 'default'
+    package 'hhvm'
+else
+    package "hhvm-#{node['hhvm']['package']['type']}"
+end
