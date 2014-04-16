@@ -1,13 +1,13 @@
 include_recipe 'apt'
 
-case node['platform_version'].to_i
-  when 7
+case node['platform_version']
+  when '7'
     release = 'wheezy'
 
-  when 12.04
+  when '12.04'
     release = 'precise'
 
-  when 13.1
+  when '13.10'
     release = 'saucy'
 
   else
