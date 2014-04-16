@@ -11,13 +11,13 @@ describe 'hhvm::default' do
         let(:chef_run) {
             ChefSpec::Runner.new(platform: 'ubuntu', version: '12.04').converge(described_recipe)
         }
-        
+
         it 'Defaults to HHVM package installation' do
             expect(chef_run).to install_package('hhvm')
         end
 
         describe 'Debian' do
-            %w(7.1 7.2 7.3 7.4).each do |version|
+            %w(7.0 7.1 7.2 7.3 7.4).each do |version|
                 let(:chef_run) {
                     ChefSpec::Runner.new(
                         platform: 'debian',

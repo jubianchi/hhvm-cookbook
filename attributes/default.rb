@@ -29,7 +29,11 @@ default['hhvm']['source']['dependencies']['ubuntu'][13.1] = [
   'libmysqlclient-dev', 'libncurses-dev', 'libonig-dev', 'libpcre3-dev', 'libreadline-dev', 'libtbb-dev', 'libtool',
   'libxml2-dev', 'zlib1g-dev'
 ]
-default['hhvm']['source']['dependencies']['debian'][7.0] = [
+default['hhvm']['source']['dependencies']['debian'][7.0] =
+default['hhvm']['source']['dependencies']['debian'][7.1] =
+default['hhvm']['source']['dependencies']['debian'][7.2] =
+default['hhvm']['source']['dependencies']['debian'][7.3] =
+default['hhvm']['source']['dependencies']['debian'][7.4] = [
   'git-core', 'cmake', 'libmysqlclient-dev', 'libxml2-dev', 'libmcrypt-dev', 'libicu-dev', 'openssl', 'build-essential',
   'binutils-dev', 'libcap-dev', 'zlib1g-dev', 'libtbb-dev', 'libonig-dev', 'libpcre3-dev', 'autoconf', 'libtool',
   'libcurl4-openssl-dev', 'wget', 'memcached', 'libreadline-dev', 'libncurses-dev', 'libmemcached-dev', 'libbz2-dev',

@@ -1,16 +1,16 @@
 include_recipe 'apt'
 
-case node['platform_version'].to_i
-  when 7
-    release = 'wheezy'
+release = case node['platform_version'].to_f
+when 7...8
+    'wheezy'
 
-  when 12.04
-    release = 'precise'
+when 12.04
+    'precise'
 
-  when 13.1
-    release = 'saucy'
+when 13.1
+    'saucy'
 
-  else
+else
     raise %W(Platform not supported: #{node['platform_family']} (#{node[:platform]}) #{node['platform_version']}).join(' ')
 end
 
