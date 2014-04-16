@@ -1,4 +1,4 @@
-# hhvm
+# hhvm [![Build Status](https://travis-ci.org/jubianchi/hhvm-cookbook.svg?branch=master)](https://travis-ci.org/jubianchi/hhvm-cookbook)
 
 ## Requirements
 
