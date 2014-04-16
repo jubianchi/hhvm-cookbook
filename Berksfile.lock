@@ -1,11 +1,13 @@
-DEPENDENCIES
-  hhvm
-    path: .
-    metadata: true
-
-GRAPH
-  apt (2.3.8)
-  hhvm (0.2.1)
-    apt (>= 0.0.0)
-    yum (>= 0.0.0)
-  yum (3.2.0)
+{
+  "sources": {
+    "hhvm": {
+      "path": "."
+    },
+    "apt": {
+      "locked_version": "2.3.8"
+    },
+    "yum": {
+      "locked_version": "3.1.6"
+    }
+  }
+}

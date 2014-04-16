@@ -11,5 +11,4 @@
 bin/*
 .bundle/*
 
-package.tar.gz
-
+vendor/
