@@ -10,6 +10,9 @@ when 12.04
 when 13.1
     'saucy'
 
+when 14.04
+	'trusty'
+
 else
     raise %W(Platform not supported: #{node['platform_family']} (#{node[:platform]}) #{node['platform_version']}).join(' ')
 end
