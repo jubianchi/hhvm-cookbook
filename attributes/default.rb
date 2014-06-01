@@ -29,6 +29,17 @@ default['hhvm']['source']['dependencies']['ubuntu'][13.1] = [
   'libmysqlclient-dev', 'libncurses-dev', 'libonig-dev', 'libpcre3-dev', 'libreadline-dev', 'libtbb-dev', 'libtool',
   'libxml2-dev', 'zlib1g-dev'
 ]
+default['hhvm']['source']['dependencies']['ubuntu'][14.04] = [
+  'autoconf', 'automake', 'binutils-dev', 'build-essential', 'cmake', 'g++', 'git', 'libboost-dev',
+  'libboost-filesystem-dev', 'libboost-program-options-dev', 'libboost-regex-dev', 'libboost-system-dev',
+  'libboost-thread-dev', 'libbz2-dev', 'libc-client-dev', 'libldap2-dev', 'libc-client2007e-dev',
+  'libcap-dev', 'libcurl4-openssl-dev', 'libdwarf-dev', 'libelf-dev', 'libexpat-dev', 'libgd2-xpm-dev',
+  'libgoogle-glog-dev', 'libgoogle-perftools-dev', 'libicu-dev', 'libjemalloc-dev', 'libmcrypt-dev',
+  'libmemcached-dev', 'libmysqlclient-dev', 'libncurses-dev', 'libonig-dev', 'libpcre3-dev', 'libreadline-dev',
+  'libtbb-dev', 'libtool', 'libxml2-dev', 'zlib1g-dev', 'libevent-dev', 'libmagickwand-dev', 'libinotifytools0-dev',
+  'libiconv-hook-dev', 'libedit-dev', 'libiberty-dev', 'libxslt1-dev', 'ocaml-native-compilers', 'php5-imagick'
+]
+
 default['hhvm']['source']['dependencies']['debian'][7.0] =
 default['hhvm']['source']['dependencies']['debian'][7.1] =
 default['hhvm']['source']['dependencies']['debian'][7.2] =

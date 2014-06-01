@@ -11,10 +11,16 @@ git 'hhvm' do
   enable_submodules true
   depth 50
   action :sync
-  notifies :run, 'execute[libevent-clean]', :immediately
+  if node['platform'] == "Ubuntu" and node['platform_version'].to_f <= 14.04
+	notifies :run, 'execute[libevent-clean]', :immediately
+  else
+	notifies :run, 'execute[hhvm-cmake]', :immediately
+  end
 end
 
-include_recipe 'hhvm::_source_common_libevent'
+if node['platform'] == "Ubuntu" and node['platform_version'].to_f <= 14.04
+	include_recipe 'hhvm::_source_common_libevent'
+end
 
 execute 'hhvm-cmake' do
   command 'cmake .'
