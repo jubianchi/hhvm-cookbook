@@ -45,6 +45,12 @@ Vagrant.configure('2') do |config|
     centos_6_4.vm.box_url = 'https://github.com/2creatives/vagrant-centos/releases/download/v0.1.0/centos64-x86_64-20131030.box'
   end
 
+  # CentOS 6.5
+  config.vm.define :centos_6_5 do |centos_6_5|
+    centos_6_5.vm.box = 'centos_6_5_64'
+    centos_6_5.vm.box_url = 'https://github.com/2creatives/vagrant-centos/releases/download/v6.5.3/centos65-x86_64-20140116.box'
+  end
+
   config.vm.provider :virtualbox do |vb|
     vb.customize ['modifyvm', :id, '--cpus', hhvm_vm_cpus]
     vb.customize ['modifyvm', :id, '--memory', hhvm_vm_memory]
