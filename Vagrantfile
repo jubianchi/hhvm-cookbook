@@ -27,6 +27,12 @@ Vagrant.configure('2') do |config|
     saucy.vm.box_url = 'http://cloud-images.ubuntu.com/vagrant/saucy/current/saucy-server-cloudimg-amd64-vagrant-disk1.box'
   end
 
+  # Ubuntu Trusty 14,04
+  config.vm.define :ubuntu_trusty do |trusty|
+    saucy.vm.box = 'trusty64'
+    saucy.vm.box_url = "http://cloud-images.ubuntu.com/vagrant/trusty/current/trusty-server-cloudimg-amd64-vagrant-disk1.box"
+  end
+
   # Debian Wheezy 7
   config.vm.define :debian_wheezy do |wheezy|
     wheezy.vm.box = 'wheezy64'
