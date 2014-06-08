@@ -38,15 +38,17 @@ describe 'hhvm::package' do
     end
 
     describe 'CentOS' do
-        let(:chef_run) {
-            ChefSpec::Runner.new(
-                platform: 'centos',
-                version: '6.4'
-            ).converge(described_recipe)
-        }
+        %w(6.4 6.5).each do |version|
+            let(:chef_run) {
+                ChefSpec::Runner.new(
+                    platform: 'centos',
+                    version: version
+                ).converge(described_recipe)
+            }
 
-        it "Includes RHEL recipe" do
-            expect(chef_run).to include_recipe('hhvm::_package_rhel')
+            it "Includes RHEL recipe on CentOS #{version}" do
+                expect(chef_run).to include_recipe('hhvm::_package_rhel')
+            end
         end
     end
 end
