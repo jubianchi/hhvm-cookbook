@@ -32,7 +32,7 @@ describe 'hhvm::default' do
         end
 
         describe 'Ubuntu' do
-            %w(12.04 13.10).each do |version|
+            %w(12.04 13.10 14.04).each do |version|
                 let(:chef_run) {
                     ChefSpec::Runner.new(
                         platform: 'ubuntu',
