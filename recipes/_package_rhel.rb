@@ -1,7 +1,7 @@
 include_recipe 'yum'
 
 case node['platform_version'].to_f
-  when 6.4, 6.5
+  when 6.4, 6.5, 6.6, 6.7 
     remote_file '/tmp/epel.rpm' do
       source 'http://ftp.riken.jp/Linux/fedora/epel/6/i386/epel-release-6-8.noarch.rpm'
       action :create_if_missing
