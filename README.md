@@ -7,10 +7,10 @@
 
 ## Platforms
 
-|              | Debian 7   | Ubuntu 12.04   | Ubuntu 13.10   | Ubuntu 14.04   | CentOS 6.4   | Centos 6.5   |
-| -----------: | :--------: | :------------: | :------------: | :------------: | :----------: | :----------: |
-| **Source**   | X          | X              | X              | X              |              |              |
-| **Package**  | X          | X              | X              | X              | X            | X            |
+|              | Debian 7   | Ubuntu 12.04   | Ubuntu 13.10   | Ubuntu 14.04   | CentOS 6.4   | Centos 6.5   | Centos 6.6   | Centos 6.7   |
+| -----------: | :--------: | :------------: | :------------: | :------------: | :----------: | :----------: | :----------: | :----------: |
+| **Source**   | X          | X              | X              | X              |              |              |              |              |
+| **Package**  | X          | X              | X              | X              | X            | X            | X            | X            |
 
 **The cookbook was tested on the previous platforms using the provided [`Vagrantfile`](Vagrantfile).**
 
