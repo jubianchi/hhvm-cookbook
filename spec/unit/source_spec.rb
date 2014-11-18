@@ -1,9 +1,9 @@
 require 'spec_helper'
 
 describe 'hhvm::source' do
-    let(:chef_run) { ChefSpec::Runner.new.converge(described_recipe) }
+    let(:chef_run) { ChefSpec::SoloRunner.new.converge(described_recipe) }
 
-    it "Throws an error on unsupported platform" do
+    it 'Throws an error on unsupported platform' do
         expect { chef_run }.to raise_error(RuntimeError)
     end
 
@@ -14,7 +14,7 @@ describe 'hhvm::source' do
     describe 'Debian' do
         %w(7.0 7.1 7.2 7.3 7.4).each do |version|
             let(:chef_run) {
-                ChefSpec::Runner.new(platform: 'debian', version: version) do |node|
+                ChefSpec::SoloRunner.new(platform: 'debian', version: version) do |node|
                     node.set['hhvm']['installation_type'] = 'source'
                 end.converge(described_recipe)
             }
@@ -28,7 +28,7 @@ describe 'hhvm::source' do
     describe 'Ubnuntu' do
         %w(12.04 13.10 14.04).each do |version|
             let(:chef_run) {
-                ChefSpec::Runner.new(platform: 'ubuntu', version: version) do |node|
+                ChefSpec::SoloRunner.new(platform: 'ubuntu', version: version) do |node|
                     node.set['hhvm']['installation_type'] = 'source'
                 end.converge(described_recipe)
             }
