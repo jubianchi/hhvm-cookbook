@@ -4,7 +4,7 @@ maintainer_email       'contact@jubianchi.fr'
 license                'MIT'
 description            'Installs/Configures hhvm'
 long_description       IO.read(File.join(File.dirname(__FILE__), 'README.md'))
-version                '0.4.0'
+version                '0.5.0'
 
 depends                'apt'
 depends                'yum'
@@ -14,5 +14,5 @@ supports               'ubuntu'
 supports               'centos'
 
 recipe 'hhvm',         'Installs hhvm'
-recipe 'php::package', 'Installs hhvm using packages.'
-recipe 'php::source',  'Installs hhvm from source.'
+recipe 'hhvm::package', 'Installs hhvm using packages.'
+recipe 'hhvm::source',  'Installs hhvm from source.'
