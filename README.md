@@ -30,6 +30,8 @@
 | `node['hhvm']['installation_type']`               | package                                | Installation method ([`package`](#hhvmpackage) or [`source`](#hhvmsource))  |
 | **Package installation**                          |                                        |                                                                             |
 | `node['hhvm']['package']['type']`                 | default                                | Which HHVM package to install (one of dbg, nightly, nightly-dbg or default) |
+| `node['hhvm']['setup_centos_hhvm_repo']`          | true                                   | If true, hop5.in will be installed on Centos hosts                          |
+| `node['hhvm']['setup_centos_epel_repo']`          | true                                   | If true, EPEL will be installed on Centos hosts                             |
 | **Source installation**                           |                                        |                                                                             |
 | `node['hhvm']['source']['make_jobs']`             | 1                                      | Number of parallel jobs when running `make` commands                        |
 | `node['hhvm']['source']['hhvm_repository']`       | git://github.com/facebook/hhvm.git     | HHVM git repository URL                                                     |
