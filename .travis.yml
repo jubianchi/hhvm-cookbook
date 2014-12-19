@@ -3,13 +3,4 @@ rvm:
   - 2.0.0
   - 2.1.0
 
-notifications:
-  irc:
-    channels:
-      - "chat.freenode.net#jubianchifr"
-    use_notice: true
-    skip_join: true
-    template:
-      - "%{message} (%{author}): %{build_url}"
-
 bundler_args: --jobs 7
