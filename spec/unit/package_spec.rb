@@ -11,7 +11,7 @@ describe 'hhvm::package' do
         %w(7.0 7.1 7.2 7.4).each do |version|
             describe version do
                 let(:chef_run) {
-                    ChefSpec::Runner.new(
+                    ChefSpec::SoloRunner.new(
                         platform: 'debian',
                         version: version,
                     ).converge('hhvm::default')
@@ -28,7 +28,7 @@ describe 'hhvm::package' do
         %w(12.04 13.10 14.04).each do |version|
             describe version do
               let(:chef_run) {
-                  ChefSpec::Runner.new(
+                  ChefSpec::SoloRunner.new(
                       platform: 'ubuntu',
                       version: version
                   ).converge(described_recipe)
@@ -55,7 +55,7 @@ describe 'hhvm::package' do
         %w(6.4 6.5 6.6).each do |version|
             describe version do
                 let(:chef_run) {
-                    ChefSpec::Runner.new(
+                    ChefSpec::SoloRunner.new(
                         platform: 'centos',
                         version: version
                     )
@@ -68,7 +68,7 @@ describe 'hhvm::package' do
                 end
 
                 it 'Adds EPEL repository' do
-                    chef_run = ChefSpec::Runner.new(platform: 'centos', version: version) do |node|
+                    chef_run = ChefSpec::SoloRunner.new(platform: 'centos', version: version) do |node|
                         node.set['user_ssh_keys'] = {
                             :hhvm => {
                                 :setup_centos_epel_repo => true

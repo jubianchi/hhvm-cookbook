@@ -15,7 +15,7 @@ describe 'hhvm::source' do
         %w(7.0 7.1 7.2 7.4).each do |version|
             describe version do
               let(:chef_run) {
-                ChefSpec::Runner.new(platform: 'debian', version: version) do |node|
+                ChefSpec::SoloRunner.new(platform: 'debian', version: version) do |node|
                   node.set['hhvm']['installation_type'] = 'source'
                 end.converge(described_recipe)
               }
