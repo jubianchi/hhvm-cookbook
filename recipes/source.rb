@@ -5,7 +5,6 @@ case node['platform']
     end
 
     node['hhvm']['source']['dependencies'][node['platform']][node['platform_version'].to_f].each do |pkg|
-      log 'Installing '.concat(pkg)
       package pkg
     end
 

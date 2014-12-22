@@ -1,6 +1,6 @@
 include_recipe 'yum'
 
-if node['hhvm']['setup_centos_epel_repo'] == true
+if node['hhvm']['setup_centos_epel_repo']
   case node['platform_version'].to_f
     when 6.4, 6.5, 6.6, 6.7 
       remote_file '/tmp/epel.rpm' do
@@ -18,7 +18,7 @@ if node['hhvm']['setup_centos_epel_repo'] == true
   end
 end
 
-if node['hhvm']['setup_centos_hhvm_repo'] == true
+if node['hhvm']['setup_centos_hhvm_repo']
   yum_repository 'hhvm' do
     baseurl 'http://www.hop5.in/yum/el6/'
     gpgkey 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-HOP5'

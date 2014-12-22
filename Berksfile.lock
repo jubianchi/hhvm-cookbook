@@ -5,7 +5,7 @@ DEPENDENCIES
 
 GRAPH
   apt (2.3.8)
-  hhvm (0.5.0)
+  hhvm (0.5.1)
     apt (>= 0.0.0)
     yum (>= 0.0.0)
   yum (3.2.0)

@@ -8,46 +8,79 @@ describe 'hhvm::package' do
     end
 
     describe 'Debian' do
-        %w(7.0 7.1 7.2 7.3 7.4).each do |version|
-            let(:chef_run) {
-                ChefSpec::SoloRunner.new(
-                    platform: 'debian',
-                    version: version,
-                ).converge('hhvm::default')
-            }
+        %w(7.0 7.1 7.2 7.4).each do |version|
+            describe version do
+                let(:chef_run) {
+                    ChefSpec::Runner.new(
+                        platform: 'debian',
+                        version: version,
+                    ).converge('hhvm::default')
+                }
 
-            it "Includes Debian recipe on Debian #{version}" do
-                expect(chef_run).to include_recipe('hhvm::_package_debian')
+                it 'Includes Debian recipe' do
+                    expect(chef_run).to include_recipe('hhvm::_package_debian')
+                end
             end
         end
     end
 
     describe 'Ubnuntu' do
         %w(12.04 13.10 14.04).each do |version|
-            let(:chef_run) {
-                ChefSpec::SoloRunner.new(
-                    platform: 'ubuntu',
-                    version: version
-                ).converge(described_recipe)
-            }
+            describe version do
+              let(:chef_run) {
+                  ChefSpec::Runner.new(
+                      platform: 'ubuntu',
+                      version: version
+                  ).converge(described_recipe)
+              }
 
-            it "Includes Debian recipe on Ubuntu #{version}" do
-                expect(chef_run).to include_recipe('hhvm::_package_debian')
+              it 'Includes Debian recipe' do
+                  expect(chef_run).to include_recipe('hhvm::_package_debian')
+              end
+
+              if version == '12.04'
+                it 'Adds boost repository' do
+                  expect(chef_run).to add_apt_repository('mapnik-boost')
+                end
+              end
+
+              it 'Adds HHVM repository' do
+                expect(chef_run).to add_apt_repository('hhvm')
+              end
             end
         end
     end
 
     describe 'CentOS' do
-        %w(6.4 6.5).each do |version|
-            let(:chef_run) {
-                ChefSpec::SoloRunner.new(
-                    platform: 'centos',
-                    version: version
-                ).converge(described_recipe)
-            }
+        %w(6.4 6.5 6.6).each do |version|
+            describe version do
+                let(:chef_run) {
+                    ChefSpec::Runner.new(
+                        platform: 'centos',
+                        version: version
+                    )
+                }
 
-            it "Includes RHEL recipe on CentOS #{version}" do
-                expect(chef_run).to include_recipe('hhvm::_package_rhel')
+                it 'Includes RHEL recipe' do
+                    chef_run.converge(described_recipe)
+
+                    expect(chef_run).to include_recipe('hhvm::_package_rhel')
+                end
+
+                it 'Adds EPEL repository' do
+                    chef_run = ChefSpec::Runner.new(platform: 'centos', version: version) do |node|
+                        node.set['user_ssh_keys'] = {
+                            :hhvm => {
+                                :setup_centos_epel_repo => true
+                            }
+                        }
+                    end
+
+                    chef_run.converge(described_recipe)
+
+                    expect(chef_run).to create_remote_file_if_missing('/tmp/epel.rpm')
+                    expect(chef_run).to install_package('epel').with(source: '/tmp/epel.rpm')
+                end
             end
         end
     end
