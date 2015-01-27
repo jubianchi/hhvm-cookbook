@@ -1,8 +1,8 @@
-case node[:platform]
-  when 'debian', 'ubuntu'
+case node[:platform_family]
+  when 'debian'
     include_recipe 'hhvm::_package_debian'
 
-  when 'rhel', 'centos'
+  when 'rhel'
     include_recipe 'hhvm::_package_rhel'
 
   else
