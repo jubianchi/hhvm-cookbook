@@ -15,3 +15,5 @@ default[:hhvm][:server_config][:cookbook] = "hhvm"
 default[:hhvm][:nginx][:path] = "/etc/nginx/hhvm.ini"
 default[:hhvm][:nginx][:template] = "nginx.conf.erb"
 default[:hhvm][:nginx][:cookbook] = "hhvm"
+
+default[:hhvm][:configs] = {}
