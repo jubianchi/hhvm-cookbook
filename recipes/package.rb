@@ -8,3 +8,4 @@ case node[:platform_family]
   else
     raise %W(Platform not supported: #{node['platform_family']} (#{node[:platform]}) #{node['platform_version']}).join(' ')
 end
+include_recipe 'hhvm::_config'
