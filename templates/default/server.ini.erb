@@ -1,0 +1,28 @@
+; php options
+<% if node[:hhvm][:pid] then%>
+pid = <%= node[:hhvm][:pid] %>
+<% end %>
+
+; hhvm specific 
+<% if node[:hhvm][:server][:port] then %>
+hhvm.server.port = <%= node[:hhvm][:server][:port] %>
+<% end %>
+<% if node[:hhvm][:server][:type] then %>
+hhvm.server.type = <%= node[:hhvm][:server][:type] %>
+<% end %>
+<% if node[:hhvm][:server][:default_document] then %>
+hhvm.server.default_document = <%= node[:hhvm][:server][:default_document] %>
+<% end %>
+<% if node[:hhvm][:log][:use_log_file] then %>
+hhvm.log.use_log_file = <%= node[:hhvm][:log][:use_log_file] %>
+<% end %>
+<% if node[:hhvm][:log][:file] then %>
+hhvm.log.file = <%= node[:hhvm][:log][:file] %>
+<% end %>
+<% if node[:hhvm][:repo][:central][:path] then %>
+hhvm.repo.central.path = <%= node[:hhvm][:repo][:central][:path] %>
+<% end %>
+
+<% node[:hhvm][:configs].each do |key, value| %>
+<%= key %> = <%= value %>
+<% end %>
