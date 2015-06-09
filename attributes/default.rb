@@ -2,6 +2,7 @@ default['hhvm']['installation_type'] = 'package'
 
 # Package installation
 default['hhvm']['package']['type'] = :default
+default['hhvm']['package']['debian_release'] = nil
 
 # If true, this cookbook will deploy a new repository (hop5.in) to install the 'hhvm' package.
 # Set to false if you already have 'hhvm' and all dependencies available on your own repository.

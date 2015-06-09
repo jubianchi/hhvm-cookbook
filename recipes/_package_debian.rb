@@ -1,6 +1,6 @@
 include_recipe 'apt'
 
-release = case node['platform_version'].to_f
+release = node['hhvm']['package']['debian_release'] || case node['platform_version'].to_f
 when 7...8
     'wheezy'
 

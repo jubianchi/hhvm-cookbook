@@ -24,7 +24,7 @@ describe 'hhvm::package' do
         end
     end
 
-    describe 'Ubnuntu' do
+    describe 'Ubuntu' do
         %w(12.04 13.10 14.04).each do |version|
             describe version do
               let(:chef_run) {
@@ -81,6 +81,36 @@ describe 'hhvm::package' do
                     expect(chef_run).to create_remote_file_if_missing('/tmp/epel.rpm')
                     expect(chef_run).to install_package('epel').with(source: '/tmp/epel.rpm')
                 end
+            end
+        end
+    end
+
+    describe 'Ubuntu with release override' do
+        %w(12.04 13.10 14.04).each do |version|
+            describe version do
+              let(:chef_run) {
+                  c = ChefSpec::SoloRunner.new(
+                      platform: 'ubuntu',
+                      version: version
+                  ) do |node|
+                    node.set['hhvm']['package']['debian_release'] = 'trusty-lts-3.3'
+                  end
+                  c.converge(described_recipe)
+              }
+
+              it 'Includes Debian recipe' do
+                  expect(chef_run).to include_recipe('hhvm::_package_debian')
+              end
+
+              if version == '12.04'
+                it 'Adds boost repository' do
+                  expect(chef_run).to add_apt_repository('mapnik-boost')
+                end
+              end
+
+              it 'Adds HHVM repository' do
+                expect(chef_run).to add_apt_repository('hhvm').with(distribution: 'trusty-lts-3.3')
+              end
             end
         end
     end
