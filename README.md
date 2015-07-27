@@ -30,6 +30,7 @@
 | `node['hhvm']['installation_type']`               | package                                | Installation method ([`package`](#hhvmpackage) or [`source`](#hhvmsource))  |
 | **Package installation**                          |                                        |                                                                             |
 | `node['hhvm']['package']['type']`                 | default                                | Which HHVM package to install (one of dbg, nightly, nightly-dbg or default) |
+| `node['hhvm']['package']['debian_release']`       | nil                                    | If given, use that for the release when constructing URLs for the APT repository |
 | `node['hhvm']['setup_centos_hhvm_repo']`          | true                                   | If true, hop5.in will be installed on Centos hosts                          |
 | `node['hhvm']['setup_centos_epel_repo']`          | true                                   | If true, EPEL will be installed on Centos hosts                             |
 | **Source installation**                           |                                        |                                                                             |
