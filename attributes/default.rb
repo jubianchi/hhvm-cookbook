@@ -3,7 +3,8 @@ default['hhvm']['installation_type'] = 'package'
 # Package installation
 default['hhvm']['package']['type'] = :default
 default['hhvm']['package']['debian_release'] = nil
-
+default['hhvm']['package']['lts'] = true
+default['hhvm']['package']['lts_version'] = "3.9"
 # If true, this cookbook will deploy a new repository (hop5.in) to install the 'hhvm' package.
 # Set to false if you already have 'hhvm' and all dependencies available on your own repository.
 default['hhvm']['setup_centos_epel_repo'] = true
