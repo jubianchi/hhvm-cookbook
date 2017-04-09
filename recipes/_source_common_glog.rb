@@ -1,8 +1,8 @@
 glog_src = File.join(node['hhvm']['source']['layout']['working_dir'], 'google-glog')
 
-subversion 'google-glog' do
-  repository 'http://google-glog.googlecode.com/svn/trunk/'
-  revision 'HEAD'
+git 'google-glog' do
+  repository 'https://github.com/google/glog.git'
+  reference 'master'
   destination glog_src
   action :sync
 end
@@ -18,4 +18,3 @@ execute 'google-glog-make' do
   command "make -j#{node['hhvm']['source']['make_jobs'].to_s} && make install"
   cwd glog_src
 end
-
