@@ -92,7 +92,7 @@ default['hhvm']['source']['dependencies']['debian'][8.4] = [
   'libboost-filesystem1.55-dev', 'libboost-regex1.55-dev', 'libboost-context1.55-dev',
   'libgd2-xpm-dev', 'pkg-config', 'libdwarf-dev', 'binutils-dev', 'ocaml-nox', 'libppl-dev',
   'libevent-dev', 'gperf', 'libgmp-dev', 'libxslt1-dev', 'libmagickwand-dev', 'libgflags-dev',
-  'libasan0', 'libgcc-4.9-dev', 'libldap2-dev', 'gawk'
+  'libasan0', 'libgcc-4.9-dev', 'libldap2-dev', 'gawk', 'libkrb5-dev'
 ]
 
 default['hhvm']['source']['layout']['working_dir'] = '/usr/src'
