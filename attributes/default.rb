@@ -19,7 +19,8 @@ default['hhvm']['source']['libevent_revision'] = 'eb8122f26c278e6e3e8a495618ed1c
 
 default['hhvm']['source']['make_jobs'] = 1
 
-if node['packages'].keys.any? { |pkg| pkg.include? 'mariadb-server' }
+mariadb_detected = node['packages'] && node['packages'].keys.any? { |pkg| pkg.include? 'mariadb-server' }
+if mariadb_detected
   default['hhvm']['source']['mysql_variant'] = 'mariadb'
 else
   default['hhvm']['source']['mysql_variant'] = 'mysql'
