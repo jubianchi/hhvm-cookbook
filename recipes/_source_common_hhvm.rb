@@ -35,5 +35,13 @@ execute 'hhvm-make' do
   cwd hhvm_src
   environment (env)
   creates '/usr/local/bin/hhvm'
+  notifies :run, 'execute[hhvm-php-alternative]'
+  action :nothing
+end
+
+update_alternative = '/usr/bin/update-alternatives'
+execute 'hhvm-php-alternative' do
+  command "#{update_alternative} --install /usr/bin/php php /usr/local/bin/hhvm 60"
+  only_if { File.executable? update_alternative}
   action :nothing
 end
