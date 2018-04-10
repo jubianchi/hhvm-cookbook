@@ -80,7 +80,10 @@ default['hhvm']['source']['dependencies']['debian'][8.0] =
 default['hhvm']['source']['dependencies']['debian'][8.1] =
 default['hhvm']['source']['dependencies']['debian'][8.2] =
 default['hhvm']['source']['dependencies']['debian'][8.3] =
-default['hhvm']['source']['dependencies']['debian'][8.4] = [
+default['hhvm']['source']['dependencies']['debian'][8.4] =
+default['hhvm']['source']['dependencies']['debian'][8.5] =
+default['hhvm']['source']['dependencies']['debian'][8.6] =
+default['hhvm']['source']['dependencies']['debian'][8.7] = [
   "lib#{node['hhvm']['source']['mysql_variant']}client-dev", 'libpq-dev',
   'git-core', 'cmake', 'libxml2-dev', 'libmcrypt-dev', 'libicu-dev', 'openssl', 'build-essential',
   'binutils-dev', 'libcap-dev', 'zlib1g-dev', 'libtbb-dev', 'libonig-dev', 'libpcre3-dev', 'autoconf', 'libtool',

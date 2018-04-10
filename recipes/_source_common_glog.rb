@@ -2,7 +2,7 @@ glog_src = File.join(node['hhvm']['source']['layout']['working_dir'], 'google-gl
 
 git 'google-glog' do
   repository 'https://github.com/google/glog.git'
-  reference 'master'
+  reference 'v0.3.4'
   destination glog_src
   action :sync
 end
